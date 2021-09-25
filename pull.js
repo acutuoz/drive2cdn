@@ -18,11 +18,9 @@ async function listFiles (driveClient, parent = 'root', pageToken = null) {
 async function downloadFile (driveClient, file, dir) {
   let path = dir + '/' + file.name
   if (file.mimeType != 'application/vnd.google-apps.folder') {
-    /*
     if (file.size > max_file_size) {
       return
-    }*/
-    
+    }
     let dest = fs.createWriteStream(path)
     driveClient.files.get({
       fileId: file.id,
